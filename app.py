@@ -1,7 +1,7 @@
 # app.py
 """
-This module initializes the Flask application and its routes. It configures the application
-based on the environment and applies role-based access control to certain endpoints.
+This module initializes the Flask application and its routes. It configures the application based
+on the environment and applies role-based access control to certain endpoints.
 """
 import os
 from flask import Flask, request, jsonify, g
