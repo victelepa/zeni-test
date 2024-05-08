@@ -1,6 +1,8 @@
 # README
 
-This document provides instructions on how to set up, run, and deploy a simple Flask application. This application includes basic authentication and role-based access control.
+This document provides instructions on how to set up, run, and deploy a simple Flask application. This application includes 
+basic authentication and role-based access control. I have already uploaded it to an EC2 instance, and you can access it
+through http://3.137.167.63:80/
 
 ## Getting Started
 
