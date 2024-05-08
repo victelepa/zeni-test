@@ -1,4 +1,8 @@
 # app.py
+"""
+This module initializes the Flask application and its routes. It configures the application
+based on the environment and applies role-based access control to certain endpoints.
+"""
 import os
 from flask import Flask, request, jsonify, g
 from datetime import datetime
@@ -26,6 +30,15 @@ elif os.getenv('FLASK_ENV') == 'development':
     print("dev mode")
 
 def role_required(role):
+    """
+    Decorator to enforce role-based access control for routes.
+
+    Parameters:
+        role (str): The role required to access the function.
+
+    Returns:
+        function: The decorator that checks user's role before executing the function.
+    """
     def decorator(f):
         @wraps(f)
         def decorated_function(*args, **kwargs):
@@ -38,12 +51,20 @@ def role_required(role):
 @app.route('/')
 @auth.login_required
 def welcome():
+    """Returns a welcome message to the authenticated user."""
     return "Welcome to the API"
 
 @app.route('/data', methods=['POST'])
 @auth.login_required
 @role_required('admin')
 def post_data():
+    """
+    Processes JSON data from the request by adding a timestamp and returning it.
+    Only accessible by users with the 'admin' role.
+
+    Returns:
+        Response: JSON data with a timestamp or an error message.
+    """
     if request.is_json:
         try:
             data = schema.load(request.get_json())

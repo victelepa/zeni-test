@@ -1,7 +1,15 @@
 # config.py
+"""
+Configuration classes for the Flask application. Each class configures the application
+for a different environment.
+"""
+
 import os
 
 class Config:
+    """
+    Base configuration with settings applicable to all environments.
+    """
     SECRET_KEY = os.getenv('SECRET_KEY', 'default_secret_key')
     DEBUG = False
     TESTING = False
